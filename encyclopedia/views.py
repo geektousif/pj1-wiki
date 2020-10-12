@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from markdown2 import Markdown
 from django.http import HttpResponse
+from django import forms
 
 from . import util
 
@@ -21,4 +22,15 @@ def wikipage(request,title):
         })
 
 def new_search(request):
-    search = request.POST.get('q')
+    searches = request.POST.get('q')
+    entries = util.list_entries()
+    search_result = []
+
+
+    for entry in entries:
+        if entry.lower() == searches.lower():
+            search_result.append(searches)
+        else:
+            return HttpResponse("No Matches")
+
+    return render(request, "encyclopedia/search.html", {"search_result" : search_result})
