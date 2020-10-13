@@ -10,7 +10,7 @@
     <ul>
         {% if search_result %}
             {% for search in search_result %}
-                <a href="{% url 'wikipage' search.title %}"><li>{{ search }}</li></a>
+                <a href="{% url 'encyclopedia:wikipage' search.title %}"><li>{{ search }}</li></a>
             {% endfor %}
         {% endif %}
     </ul>

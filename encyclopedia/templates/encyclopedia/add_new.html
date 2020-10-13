@@ -1,0 +1,18 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block body %}
+<div class="main">
+  {% for error in errors %}
+  <div class="alert alert-danger" role="alert">
+  {{ error }}
+</div>
+  {% endfor %}
+<form method="post">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+{% endblock %}

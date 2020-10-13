@@ -6,4 +6,5 @@
 
 {% block body %}
   <h3>{{ content|safe }}</h3>
+  <a href="{% url 'encyclopedia:edit' wikientry %}" class="btn btn-primary">Edit Content</a>
 {% endblock %}
